@@ -8,7 +8,7 @@ export default function Books(){
 
     useEffect(()=>{
      
-        fetch("http://localhost:5000/api/getbooks?url="+window.location.pathname.split("books")[1]).then(res => res.json()).then((res)=>{
+        fetch("https://yundu.co/api/getbooks?url="+window.location.pathname.split("books")[1]).then(res => res.json()).then((res)=>{
         if(!resData){
             
         setResData(res)

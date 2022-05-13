@@ -9,7 +9,7 @@ export default function Book(){
     
     const [title] = useState(decodeURI(window.location.href.split('title=')[1].split("&")[0]))
     useEffect(()=>{
-        fetch("http://localhost:5000/api/getbook?url="+window.location.pathname.split("book")[1]).then(res => res.json()).then((res)=>{
+        fetch("https://yundu.co/api/getbook?url="+window.location.pathname.split("book")[1]).then(res => res.json()).then((res)=>{
         if(!resData){
         setResData(res)
         console.log(res)
