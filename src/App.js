@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './animated.css'
+import styles from './index.module.css'
+import logo from './gdzlogo.svg'
+import Books from './Books'
+import Book from './Book'
+import Task from './Task'
+import Training from './Training'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes
+} from "react-router-dom";
+import Home from './Home'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <>
+    {window.localStorage.getItem("class") ? 
+  <Router>
+    <div className={styles.header}>
+      <Link to="/"><img src={logo}/></Link>
     </div>
+    <main>
+      <Routes>
+
+        <Route exact element={<Home/>} path="/"/>
+      <Route element={<Books/>} path="/books/:url/*"/>
+        
+      <Route element={<Book/>} path="/book/:url/*"/>
+      
+      <Route element={<Task/>} path="/task/:url/*"/>
+      </Routes>
+      <footer style={{padding:20}}>
+        <p style={{textAlign:'center'}}>Владислав Губарев, {new Date().getFullYear()}.</p>
+      </footer>
+      </main>
+    </Router>
+
+    : <main style={{marginTop:60}}><Training/></main>}
+  
+    </>
   );
 }
 

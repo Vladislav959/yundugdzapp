@@ -1,0 +1,35 @@
+
+.menu{
+    width:calc(100% + 40px);
+    margin-left:-20px;
+}
+.row{
+    padding:5px 10px;
+    border-top:1.5px solid var(--border);
+}
+.row:last-child{
+    border-bottom:1.5px solid var(--border);
+}
+.closed{
+    display:none;
+}
+.submenu{
+    margin-top:0;
+    padding-left:20px;
+    list-style-type: none;
+}
+.submenu a{
+    text-decoration: none;
+    color:var(--text);
+    margin:10px 0;
+    display:block;
+}
+.heading{
+    cursor:pointer;
+}
+.emoji{
+    width:20px;
+    height:20px;
+    margin-left:5px;
+    transform:translateY(5px);
+}

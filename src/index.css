@@ -1,13 +1,83 @@
+@font-face{
+  font-family:'Euclid Medium';
+  src:url("./EuclidCircularA-Medium.ttf")
+}
+@font-face{
+  font-family:'Euclid SemiBold';
+  src:url("./EuclidCircularA-SemiBold.ttf")
+}
+::selection{
+  background:var(--brand);
+  color:#fff;
+}
+a{
+  text-decoration: none;
+  color:#000;
+}
+h1,h2,h3,h4{
+  font-family: 'Euclid SemiBold';
+  font-weight: normal;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Euclid Medium';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+:root{
+  --border:hsl(0, 0%, 86.3%);
+  --brand:rgb(124, 58, 241);
+}
+*{
+  box-sizing: border-box;
+}
+main{
+  padding:0 20px;
+  width:100%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.react-select__control, .react-select2__control{
+  border:1.5px solid var(--border);
+  padding:0px;
+}
+.react-select2__control{
+  margin:0 8px;
+  margin-top:-9px;
+}
+.react-select__control:hover, .react-select2__control:hover{
+border-color:var(--brand)!important;
+
+}
+.react-select2__dropdown-indicator:hover, .react-select__dropdown-indicator:hover{
+  color:var(--brand);
+}
+.react-select__control--is-focused, .react-select2__control--is-focused{
+  border-color:transparent!important;
+  box-shadow:0 0 0 1px var(--brand)!important;
+}
+.react-select__option--is-selected, .react-select2__option--is-selected{
+  background:var(--brand)!important;
+}
+.react-select2__indicators, .react-select2__value-container{
+  height:35px;
+}
+.react-select2__placeholder p{
+  margin:0;
+}
+button{
+  border-radius:4px;
+  padding:8px;
+  border:none;
+  margin:10px 0;
+  transition:background .3s, color .3s;
+  color:#fff;
+  font-family: 'Euclid Medium';
+  background:var(--brand);
+}
+button:disabled{
+  background:rgb(233, 233, 233);
+  color:rgb(152, 152, 152);
 }
