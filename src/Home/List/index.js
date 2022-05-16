@@ -24,11 +24,21 @@ import spanish from '../../spanish.png'
 import kazah from '../../kazah.png'
 export default function List(props){
     const [closed,setClosed] = useState(true)
-    
     if(props.isExact){
         return(
                 <ul className={styles.submenu}>
-                {props.obj.subjects.map(elem => {
+                {props.obj.subjects.filter((el) => {
+                    if(props.preferred && props.preferred.length > 0 && !props.noDelete){
+                        return props.preferred.every((f) => {
+                            console.log(f.name !== el.subject);
+    return f.name !== el.subject;
+  });
+                    }
+                    else{
+                        return true;
+                    }
+  
+}).map(elem => {
                     let img;
                     switch(true){
                         case elem.subject.includes("Математика"):
@@ -97,9 +107,17 @@ export default function List(props){
                         default:
                             img = null
                     }
-                    return(
-                    <li><Link to={`/books${elem.href}?title=${elem.subject}, ${localStorage.getItem("class")} класс`}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :<img className={styles.emoji} style={{opacity:0}} src={img}/>}</Link></li>
+                    if(props.noLink){
+                        return(
+                    <li style={{cursor:'pointer',margin:'7px 0',color:props.preferred.find(obj => obj.name === elem.subject) ? 'var(--brand)' :"initial"}} onClick={()=>{props.onClick(elem.href,elem.subject)}}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :<img className={styles.emoji} style={{opacity:0}} src={img}/>}</li>
                     )
+                    }
+                    else{
+                     return(
+                    <li><Link to={`/book${props.isPreferred ? "" : "s"}${elem.href}?title=${elem.subject}, ${localStorage.getItem("class")} класс`}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :<img className={styles.emoji} style={{opacity:0}} src={img}/>}</Link></li>
+                    )   
+                    }
+                    
                     })}
                 </ul>
         )

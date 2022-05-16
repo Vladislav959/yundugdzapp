@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 export default function Book(){
     const [resData,setResData] = useState(null)
 
-    const [backurl] = useState(decodeURI(window.location.href.split('backurl=')[1].split("&")[0]))
+    const [backurl] = useState(decodeURI(window.location.href.split('backurl=')[1]?.split("&")[0]))
     
     const [title] = useState(decodeURI(window.location.href.split('title=')[1].split("&")[0]))
     useEffect(()=>{
@@ -18,7 +18,7 @@ export default function Book(){
     },[])
     return(
         <>
-        <Link to={backurl + "?title=" + title}><button style={{marginTop:0}}>Назад</button></Link>
+        <Link to={backurl !== "undefined" && title !== "undefined" ? backurl + "?title=" + title : "/"}><button style={{marginTop:0}}>Назад</button></Link>
         <div className={styles.main}>
             {resData ? 
             <>
@@ -32,7 +32,7 @@ export default function Book(){
                     </div>
                 </div>
                 {resData.premium ? 
-                <p>Этот учебник отмечен как премиальный, с этим ничего сделать нельзя.</p>
+                <p>Этот учебник отмечен как премиальный, от Yundu это не зависит.</p>
                 : !resData.tasks[0].items ? <div className={styles.wrap}>{resData.tasks.map(obj => {
                     if(obj.items && !obj.items[0].items){
                         return(

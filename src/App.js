@@ -1,6 +1,7 @@
 import './animated.css'
 import styles from './index.module.css'
 import logo from './gdzlogo.svg'
+import Preferred from './Preferred'
 import Books from './Books'
 import Book from './Book'
 import Task from './Task'
@@ -28,6 +29,7 @@ function App() {
         
       <Route element={<Book/>} path="/book/:url/*"/>
       
+      <Route element={<Preferred/>} path="/preferred"/>
       <Route element={<Task/>} path="/task/:url/*"/>
       </Routes>
       <footer style={{padding:20}}>

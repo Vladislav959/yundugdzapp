@@ -16,6 +16,8 @@ export default function Task(){
         }
         })
     },[])
+    console.log(title)
+    console.log(resData?.info.heading)
     return(
         <>
         <Link to={backurl + "?title="+decodeURI(window.location.href.split('&backtitle=')[1]) + "&backurl=" + decodeURI(window.location.href.split('&backurl2=')[1])}><button style={{marginTop:0}}>Назад</button></Link>
@@ -25,7 +27,7 @@ export default function Task(){
                    <div className={styles.book}>
                     <div><img src={`data:image/jpeg;base64,${resData.info.cover}`}/></div>
                     <div>
-                        <h4>{title}</h4>
+                        <h4>{resData?.info.heading.replace(title,"").trim() || resData.info.heading}</h4>
                         {resData.info.subs.map(elem => {
                             return <p>{elem}</p>
                         })}

@@ -45,7 +45,8 @@ flex-direction: column;
 }
 .task{
     margin:5px;
-    width:30px;
+    min-width:30px;
+    padding:4px;
     height:30px;
     display:flex;
     justify-content:center;
