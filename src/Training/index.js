@@ -109,7 +109,7 @@ export default class Training extends Component{
         case 1:
             return(
                 <Animated animationIn="fadeInUp" animationOut="fadeOutUp" duration={500} isVisible={this.state.visible}>
-                <h3>Выбери свой класс:</h3>
+                <h3 style={{marginBottom:8}}>Выбери свой класс:</h3>
                 <Select onChange={(t)=>{this.setState(produce(draft => {draft.data.class = t.value}))}} classNamePrefix="react-select" placeholder={<p>Выбери из списка...</p>} options={options}/>
                 <button onClick={()=>{this.nextPhase();localStorage.setItem("class",this.state.data.class);}} disabled={!this.state.data.class}>Далее</button>
                 </Animated>
@@ -151,7 +151,7 @@ export default class Training extends Component{
             return(<>
                 <Animated animationIn="fadeInUp" animationOut="fadeOutUp" duration={500} isVisible={this.state.visible}>
                 <h2 style={{marginTop:0}}>Выбери учебник:</h2>
-                
+                <div className={styles.labelscontainer}>
                 {this.state.booksRes ? this.state.booksRes.map((obj,index) => {
 
 return(
@@ -176,7 +176,7 @@ return(
 )
 })
                 
-                : <LoadingIcon color="var(--brand)" selfalign/>}
+                : <LoadingIcon color="var(--brand)" selfalign/>}</div>
                 <div style={{width:'100%',height:90}}/>
                 
                 </Animated><div className={styles.fixed}><button onClick={()=>{

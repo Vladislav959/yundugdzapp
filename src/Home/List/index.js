@@ -1,6 +1,8 @@
 import styles from '../index.module.css'
 import {useState} from 'react'
 import {Link} from 'react-router-dom'
+import technologyemoji from '../../technology.png'
+import chinese from '../../chinese.png'
 import math from '../../math.png';
 import english from '../../english.png';
 import music from '../../music.png'
@@ -26,8 +28,8 @@ export default function List(props){
     const [closed,setClosed] = useState(true)
     if(props.isExact){
         return(
-                <ul className={styles.submenu}>
-                {props.obj.subjects.filter((el) => {
+                <ul className={styles.submenu} style={{marginBottom:props.isHome ? 5 : 'auto'}}>
+                {props.obj.subjects/*.filter((el) => {
                     if(props.preferred && props.preferred.length > 0 && !props.noDelete){
                         return props.preferred.every((f) => {
                             console.log(f.name !== el.subject);
@@ -38,7 +40,7 @@ export default function List(props){
                         return true;
                     }
   
-}).map(elem => {
+})*/.map(elem => {
                     let img;
                     switch(true){
                         case elem.subject.includes("Математика"):
@@ -67,6 +69,9 @@ export default function List(props){
                             break;
                         case elem.subject.includes("Французский язык"):
                             img = french;
+                            break;
+                        case elem.subject.includes("Китайский язык"):
+                            img = chinese;
                             break;
                         case elem.subject.includes("Биология"):
                             img = biology;
@@ -98,6 +103,9 @@ export default function List(props){
                         case elem.subject.includes("Искусство"):
                             img = art;
                             break;
+                        case elem.subject.includes("Технология"):
+                            img = technologyemoji;
+                            break;
                         case elem.subject.includes("Казахский язык"):
                             img = kazah;
                             break;
@@ -109,12 +117,12 @@ export default function List(props){
                     }
                     if(props.noLink){
                         return(
-                    <li style={{cursor:'pointer',margin:'7px 0',color:props.preferred.find(obj => obj.name === elem.subject) ? 'var(--brand)' :"initial"}} onClick={()=>{props.onClick(elem.href,elem.subject)}}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :<img className={styles.emoji} style={{opacity:0}} src={img}/>}</li>
+                    <li style={{cursor:'pointer',margin:'7px 0',color:props.preferred.find(obj => obj.name === elem.subject) ? 'var(--brand)' :"initial"}} onClick={()=>{props.onClick(elem.href,elem.subject)}}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> : null}</li>
                     )
                     }
                     else{
                      return(
-                    <li><Link to={`/book${props.isPreferred ? "" : "s"}${elem.href}?title=${elem.subject}, ${localStorage.getItem("class")} класс`}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :<img className={styles.emoji} style={{opacity:0}} src={img}/>}</Link></li>
+                    <li><Link to={`/book${props.isPreferred ? "" : "s"}${elem.href}?title=${elem.subject}, ${localStorage.getItem("class")} класс`}>{elem.subject}{img ? <img className={styles.emoji} src={img}/> :null}</Link></li>
                     )   
                     }
                     

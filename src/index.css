@@ -31,9 +31,20 @@ body {
 *{
   box-sizing: border-box;
 }
+
+@media (min-width:761px) {
+  h2{
+    font-size:1.8em;
+  }
+  h3{
+    font-size:1.4em;
+  }
+}
 main{
   padding:0 20px;
   width:100%;
+  margin: auto;
+max-width: 780px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

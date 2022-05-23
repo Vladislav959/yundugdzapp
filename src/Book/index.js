@@ -12,7 +12,8 @@ export default function Book(){
         fetch("https://yundu.co/api/getbook?url="+window.location.pathname.split("book")[1]).then(res => res.json()).then((res)=>{
         if(!resData){
         setResData(res)
-        console.log(res)
+        
+     document.title = res.info.heading + " | Yundu"
         }
         })
     },[])

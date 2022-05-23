@@ -22,9 +22,6 @@
     padding:10px 20px;
     border-top:1.5px solid var(--border);
 }
-.book:last-child{
-    border-bottom:1.5px solid var(--border);
-}
 .book > div:first-of-type{
     display: inline-flex;
 }
@@ -120,4 +117,8 @@ flex-direction: column;
     padding:2px 10px;
     border-radius:5px;
     box-shadow:0 0 5px rgba(0, 0, 0, 0.114);
+  }
+  .labelscontainer label:last-child .book{
+
+    border-bottom:1.5px solid var(--border);
   }

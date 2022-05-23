@@ -9,15 +9,14 @@ export default function Task(){
     
     const [title] = useState(decodeURI(window.location.href.split('title=')[1].split("&")[0]))
     useEffect(()=>{
+        
         fetch("https://yundu.co/api/gettask?url="+window.location.pathname.split("task")[1]).then(res => res.json()).then((res)=>{
         if(!resData){
         setResData(res)
-        console.log(res)
+        document.title = (res?.info.heading.replace(title,"").trim() || resData.info.heading) + " | Yundu"
         }
         })
     },[])
-    console.log(title)
-    console.log(resData?.info.heading)
     return(
         <>
         <Link to={backurl + "?title="+decodeURI(window.location.href.split('&backtitle=')[1]) + "&backurl=" + decodeURI(window.location.href.split('&backurl2=')[1])}><button style={{marginTop:0}}>Назад</button></Link>
